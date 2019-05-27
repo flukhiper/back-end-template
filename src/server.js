@@ -1,10 +1,14 @@
+import dotenv from 'dotenv'
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import routes from './routes'
+
+dotenv.config()
 
 const server = express();
 
-const PORT = process.env.PORT = 5000;
+const PORT = process.env.NODE_PORT;
 
 server.use(
   cors(),
@@ -12,11 +16,8 @@ server.use(
   bodyParser.urlencoded({
     extended: true,
   }),
+  routes,
 );
-
-server.get('/healthz', (req, res) => {
-  res.send('OK');
-});
 
 server.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

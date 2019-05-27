@@ -5,3 +5,5 @@ yarn.lock
 docker-compose.*
 Dockerfile
 .next
+package-lock.json
+.env
